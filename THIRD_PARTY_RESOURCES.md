@@ -22,6 +22,9 @@
 | MSA 服务 / 外部服务 | Boltz server MSA 模式 | 为结构预测获取序列比对，提交输入序列 | 依服务可用性及条款；没有把服务声明为 ModAb 自有组件，不分发服务端数据库 |
 | Codex / AI 开发辅助 | 本次任务所用 Codex 环境 | 协助代码、资料核对、报告、演示制作和检查 | 适用平台条款；不将 AI 生成内容当然视为全部自主权利。作者仍需最终审阅提交材料 |
 | ReportLab、Pillow、FFmpeg / 材料制作 | 实际版本见材料生成记录 | 生成 PDF、整理截图和编码 MP4；不参与科研指标测量 | 各工具按其发行许可使用；交付只含输出材料，未分发工具二进制 |
+| Hyperframes / 视频制作 | 0.8.221；https://hyperframes.heygen.com/；https://github.com/heygen-com/hyperframes | 生成自编流程与数据动画 | Apache-2.0；自编场景工程随视频工程包提供，未分发框架运行环境 |
+| Remotion / 视频编排 | 4.0.539；https://www.remotion.dev/；https://www.remotion.dev/docs/license | 编排真实页面、结构动画、配音及字幕 | Remotion License；按适用许可制作视频，自编工程与输出随包提供，未分发 Remotion 实现 |
+| ElevenLabs / 配音服务与 SDK | 模型 eleven_v4，Daniel 声音；JavaScript SDK 2.75.0；https://elevenlabs.io/docs；https://github.com/elevenlabs/elevenlabs-js | 中文旁白与字符时间戳 | SDK 为 MIT，音频适用服务条款；本次免费额度，公开标题保留 elevenlabs.io，音频按免费非商业条款提供，不纳入代码 MIT 授权 |
 
 ## 当前开放方式
 
