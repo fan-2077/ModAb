@@ -1,0 +1,54 @@
+{
+  "candidates": [
+    {
+      "name": "candidate-01",
+      "status": "MEASURED",
+      "framework_CA_rmsd_A": 0.08611589002176373,
+      "CDR_CA_rmsd_A": 0.5014866404300566,
+      "Tau_CA_rmsd_A": 0.2141911573163878,
+      "Tau_intrinsic_CA_rmsd_A": 0.1298150883538296,
+      "contact_pairs_le_4_A": 21,
+      "phosphate_contact_pairs_le_4_A": 8,
+      "interchain_atom_pairs_lt_2_A": 0
+    },
+    {
+      "name": "candidate-02",
+      "status": "MEASURED",
+      "framework_CA_rmsd_A": 0.09412530793921603,
+      "CDR_CA_rmsd_A": 0.568523848907621,
+      "Tau_CA_rmsd_A": 0.2527802536817882,
+      "Tau_intrinsic_CA_rmsd_A": 0.155723243981126,
+      "contact_pairs_le_4_A": 23,
+      "phosphate_contact_pairs_le_4_A": 11,
+      "interchain_atom_pairs_lt_2_A": 0
+    },
+    {
+      "name": "candidate-03",
+      "status": "MEASURED",
+      "framework_CA_rmsd_A": 0.0761715783232336,
+      "CDR_CA_rmsd_A": 0.5114480460407527,
+      "Tau_CA_rmsd_A": 0.21107030365707843,
+      "Tau_intrinsic_CA_rmsd_A": 0.105965462799667,
+      "contact_pairs_le_4_A": 22,
+      "phosphate_contact_pairs_le_4_A": 10,
+      "interchain_atom_pairs_lt_2_A": 0
+    },
+    {
+      "name": "candidate-04",
+      "status": "MEASURED",
+      "framework_CA_rmsd_A": 0.08324375885108856,
+      "CDR_CA_rmsd_A": 0.49392728827772325,
+      "Tau_CA_rmsd_A": 0.2435615389896423,
+      "Tau_intrinsic_CA_rmsd_A": 0.1289121625283996,
+      "contact_pairs_le_4_A": 23,
+      "phosphate_contact_pairs_le_4_A": 11,
+      "interchain_atom_pairs_lt_2_A": 1
+    }
+  ],
+  "interpretation": {
+    "contact_retention": "Retained POSITION pairs can contain mutated Fv residues; not necessarily the same interaction chemistry.",
+    "short_contacts": "Interchain heavy-atom distances <2.0 A; not a MolProbity clashscore.",
+    "scope": "Original generated coordinates only. No relaxation, independent refolding, confidence estimation, affinity or phospho-state selectivity claim.",
+    "reference": "Derived from 5E2W; contains the previously approved three Asp1 sidechain atom repairs from 5E2V. Use only the frozen 233-residue selection; full file also contains Fab constants and waters."
+  }
+}

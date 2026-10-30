@@ -1,0 +1,495 @@
+{
+  "mission_id": "research_3260fff4ff5fc055b2dfcc6e4869aa80d5cdc9d27cac9a9b28c7125665950934",
+  "evidence_summary": {
+    "constructs": [
+      {
+        "antibody_form": "Fv",
+        "tau_start": 195,
+        "tau_end": 214,
+        "tau_residue_count": 20,
+        "subjects": [
+          "original_AT8"
+        ],
+        "states": [
+          {
+            "name": "unphosphorylated",
+            "phosphorylated_positions": []
+          },
+          {
+            "name": "pS202_pT205",
+            "phosphorylated_positions": [
+              202,
+              205
+            ]
+          },
+          {
+            "name": "pS202_pT205_pS208",
+            "phosphorylated_positions": [
+              202,
+              205,
+              208
+            ]
+          }
+        ]
+      }
+    ],
+    "sampling": [
+      {
+        "subject_state": "original_AT8/unphosphorylated",
+        "measured_samples": 1
+      },
+      {
+        "subject_state": "original_AT8/pS202_pT205",
+        "measured_samples": 1
+      },
+      {
+        "subject_state": "original_AT8/pS202_pT205_pS208",
+        "measured_samples": 1
+      }
+    ],
+    "metric_values_descending": {
+      "Tau_CA_RMSD_after_Fv_fit_A": [
+        {
+          "subject": "original_AT8/unphosphorylated/model_0",
+          "value": 8.401705266810426
+        },
+        {
+          "subject": "original_AT8/pS202_pT205/model_0",
+          "value": 6.550382326242612
+        },
+        {
+          "subject": "original_AT8/pS202_pT205_pS208/model_0",
+          "value": 6.1382051626467735
+        }
+      ],
+      "antibody_peptide_residue_pair_contacts": [
+        {
+          "subject": "original_AT8/pS202_pT205/model_0",
+          "value": 55
+        },
+        {
+          "subject": "original_AT8/unphosphorylated/model_0",
+          "value": 48
+        },
+        {
+          "subject": "original_AT8/pS202_pT205_pS208/model_0",
+          "value": 47
+        }
+      ],
+      "phosphate_atom_residue_pair_contacts": [
+        {
+          "subject": "original_AT8/pS202_pT205/model_0",
+          "value": 10
+        },
+        {
+          "subject": "original_AT8/unphosphorylated/model_0",
+          "value": 0
+        },
+        {
+          "subject": "original_AT8/pS202_pT205_pS208/model_0",
+          "value": 0
+        }
+      ],
+      "iptm": [
+        {
+          "subject": "original_AT8/unphosphorylated/model_0",
+          "value": 0.9900383353233337
+        },
+        {
+          "subject": "original_AT8/pS202_pT205/model_0",
+          "value": 0.984900951385498
+        },
+        {
+          "subject": "original_AT8/pS202_pT205_pS208/model_0",
+          "value": 0.9630139470100403
+        }
+      ],
+      "complex_plddt": [
+        {
+          "subject": "original_AT8/unphosphorylated/model_0",
+          "value": 0.9754832983016968
+        },
+        {
+          "subject": "original_AT8/pS202_pT205_pS208/model_0",
+          "value": 0.9236891269683838
+        },
+        {
+          "subject": "original_AT8/pS202_pT205/model_0",
+          "value": 0.9034742712974548
+        }
+      ]
+    },
+    "prediction_jobs_in_this_mission": 3,
+    "measured_samples_in_this_mission": 3,
+    "within_state_variation_estimated": false,
+    "interpretation": "One measured sample per state cannot estimate within-state sampling variation.",
+    "rules": [
+      "每项指标必须分别排序。例如 iptm 与 complex_plddt 不是同一个量，不能合称置信度后共享一个高低排序。排序仅比较数值，不定义性能优劣。",
+      "未磷酸化组保留为总接触和位置比较的配对对照；其磷酸接触零来自输入没有磷酸原子。",
+      "分别陈述位置偏差、总接触与磷酸接触的数值差异，不把一项非零读数概括成唯一跨状态差异。",
+      "位置偏差同时包含肽段形状和相对位置；接触数和置信度不能直接换算成结合力。",
+      "本任务与历史任务使用相同输入和随机种子时，不能直接累加为独立重复。"
+    ]
+  },
+  "comparisons": [
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metrics": {
+        "antibody_peptide_residue_pair_contacts": 48,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "minimum_antibody_peptide_distance_A": 2.471972159673325,
+        "Fv_CA_fit_RMSD_A": 0.4823354187249808,
+        "Tau_CA_RMSD_after_Fv_fit_A": 8.401705266810426,
+        "Fv_fit_CA_count": 225,
+        "shared_Tau_CA_count": 8,
+        "contact_cutoff_A": 4.5,
+        "near_cutoff_A": 4.0,
+        "confidence_score": 0.9783943295478821,
+        "iptm": 0.9900383353233337,
+        "ptm": 0.9928459525108337,
+        "complex_plddt": 0.9754832983016968,
+        "complex_iplddt": 0.9734894037246704,
+        "ligand_iptm": 0.0,
+        "protein_iptm": 0.9900383353233337,
+        "pair_chains_iptm_0_2": 0.9610890746116638,
+        "pair_chains_iptm_1_2": 0.9652664065361023,
+        "pair_chains_iptm_2_0": 0.9898141026496887,
+        "pair_chains_iptm_2_1": 0.9923710823059082
+      },
+      "fact_ids": {
+        "antibody_peptide_residue_pair_contacts": "prediction_0_antibody_peptide_residue_pair_contacts",
+        "phosphate_atom_residue_pair_contacts": "prediction_0_phosphate_atom_residue_pair_contacts",
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": "prediction_0_antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+        "minimum_antibody_peptide_distance_A": "prediction_0_minimum_antibody_peptide_distance_A",
+        "Fv_CA_fit_RMSD_A": "prediction_0_Fv_CA_fit_RMSD_A",
+        "Tau_CA_RMSD_after_Fv_fit_A": "prediction_0_Tau_CA_RMSD_after_Fv_fit_A",
+        "Fv_fit_CA_count": "prediction_0_Fv_fit_CA_count",
+        "shared_Tau_CA_count": "prediction_0_shared_Tau_CA_count",
+        "contact_cutoff_A": "prediction_0_contact_cutoff_A",
+        "near_cutoff_A": "prediction_0_near_cutoff_A",
+        "confidence_score": "prediction_0_confidence_score",
+        "iptm": "prediction_0_iptm",
+        "ptm": "prediction_0_ptm",
+        "complex_plddt": "prediction_0_complex_plddt",
+        "complex_iplddt": "prediction_0_complex_iplddt",
+        "ligand_iptm": "prediction_0_ligand_iptm",
+        "protein_iptm": "prediction_0_protein_iptm",
+        "pair_chains_iptm_0_2": "prediction_0_pair_chains_iptm_0_2",
+        "pair_chains_iptm_1_2": "prediction_0_pair_chains_iptm_1_2",
+        "pair_chains_iptm_2_0": "prediction_0_pair_chains_iptm_2_0",
+        "pair_chains_iptm_2_1": "prediction_0_pair_chains_iptm_2_1"
+      },
+      "label": "未磷酸化"
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metrics": {
+        "antibody_peptide_residue_pair_contacts": 55,
+        "phosphate_atom_residue_pair_contacts": 10,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "minimum_antibody_peptide_distance_A": 2.4156644572663653,
+        "Fv_CA_fit_RMSD_A": 0.3894293097260413,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.550382326242612,
+        "Fv_fit_CA_count": 225,
+        "shared_Tau_CA_count": 8,
+        "contact_cutoff_A": 4.5,
+        "near_cutoff_A": 4.0,
+        "confidence_score": 0.9197595715522766,
+        "iptm": 0.984900951385498,
+        "ptm": 0.9897977709770203,
+        "complex_plddt": 0.9034742712974548,
+        "complex_iplddt": 0.8440969586372375,
+        "ligand_iptm": 0.0,
+        "protein_iptm": 0.984900951385498,
+        "pair_chains_iptm_0_2": 0.8938219547271729,
+        "pair_chains_iptm_1_2": 0.8718957901000977,
+        "pair_chains_iptm_2_0": 0.9658262133598328,
+        "pair_chains_iptm_2_1": 0.9649996757507324
+      },
+      "fact_ids": {
+        "antibody_peptide_residue_pair_contacts": "prediction_1_antibody_peptide_residue_pair_contacts",
+        "phosphate_atom_residue_pair_contacts": "prediction_1_phosphate_atom_residue_pair_contacts",
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": "prediction_1_antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+        "minimum_antibody_peptide_distance_A": "prediction_1_minimum_antibody_peptide_distance_A",
+        "Fv_CA_fit_RMSD_A": "prediction_1_Fv_CA_fit_RMSD_A",
+        "Tau_CA_RMSD_after_Fv_fit_A": "prediction_1_Tau_CA_RMSD_after_Fv_fit_A",
+        "Fv_fit_CA_count": "prediction_1_Fv_fit_CA_count",
+        "shared_Tau_CA_count": "prediction_1_shared_Tau_CA_count",
+        "contact_cutoff_A": "prediction_1_contact_cutoff_A",
+        "near_cutoff_A": "prediction_1_near_cutoff_A",
+        "confidence_score": "prediction_1_confidence_score",
+        "iptm": "prediction_1_iptm",
+        "ptm": "prediction_1_ptm",
+        "complex_plddt": "prediction_1_complex_plddt",
+        "complex_iplddt": "prediction_1_complex_iplddt",
+        "ligand_iptm": "prediction_1_ligand_iptm",
+        "protein_iptm": "prediction_1_protein_iptm",
+        "pair_chains_iptm_0_2": "prediction_1_pair_chains_iptm_0_2",
+        "pair_chains_iptm_1_2": "prediction_1_pair_chains_iptm_1_2",
+        "pair_chains_iptm_2_0": "prediction_1_pair_chains_iptm_2_0",
+        "pair_chains_iptm_2_1": "prediction_1_pair_chains_iptm_2_1"
+      },
+      "label": "pS202 / pT205"
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metrics": {
+        "antibody_peptide_residue_pair_contacts": 47,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 132,
+        "minimum_antibody_peptide_distance_A": 2.421645133912068,
+        "Fv_CA_fit_RMSD_A": 0.33565901041687995,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1382051626467735,
+        "Fv_fit_CA_count": 225,
+        "shared_Tau_CA_count": 8,
+        "contact_cutoff_A": 4.5,
+        "near_cutoff_A": 4.0,
+        "confidence_score": 0.9315541386604309,
+        "iptm": 0.9630139470100403,
+        "ptm": 0.9772233366966248,
+        "complex_plddt": 0.9236891269683838,
+        "complex_iplddt": 0.8696410059928894,
+        "ligand_iptm": 0.0,
+        "protein_iptm": 0.9630139470100403,
+        "pair_chains_iptm_0_2": 0.6024472117424011,
+        "pair_chains_iptm_1_2": 0.6182191371917725,
+        "pair_chains_iptm_2_0": 0.8432443141937256,
+        "pair_chains_iptm_2_1": 0.8469077944755554
+      },
+      "fact_ids": {
+        "antibody_peptide_residue_pair_contacts": "prediction_2_antibody_peptide_residue_pair_contacts",
+        "phosphate_atom_residue_pair_contacts": "prediction_2_phosphate_atom_residue_pair_contacts",
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": "prediction_2_antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+        "minimum_antibody_peptide_distance_A": "prediction_2_minimum_antibody_peptide_distance_A",
+        "Fv_CA_fit_RMSD_A": "prediction_2_Fv_CA_fit_RMSD_A",
+        "Tau_CA_RMSD_after_Fv_fit_A": "prediction_2_Tau_CA_RMSD_after_Fv_fit_A",
+        "Fv_fit_CA_count": "prediction_2_Fv_fit_CA_count",
+        "shared_Tau_CA_count": "prediction_2_shared_Tau_CA_count",
+        "contact_cutoff_A": "prediction_2_contact_cutoff_A",
+        "near_cutoff_A": "prediction_2_near_cutoff_A",
+        "confidence_score": "prediction_2_confidence_score",
+        "iptm": "prediction_2_iptm",
+        "ptm": "prediction_2_ptm",
+        "complex_plddt": "prediction_2_complex_plddt",
+        "complex_iplddt": "prediction_2_complex_iplddt",
+        "ligand_iptm": "prediction_2_ligand_iptm",
+        "protein_iptm": "prediction_2_protein_iptm",
+        "pair_chains_iptm_0_2": "prediction_2_pair_chains_iptm_0_2",
+        "pair_chains_iptm_1_2": "prediction_2_pair_chains_iptm_1_2",
+        "pair_chains_iptm_2_0": "prediction_2_pair_chains_iptm_2_0",
+        "pair_chains_iptm_2_1": "prediction_2_pair_chains_iptm_2_1"
+      },
+      "label": "pS202 / pT205 / pS208"
+    }
+  ],
+  "coverage": {
+    "all_candidates_measured": false,
+    "predicted_records": 3,
+    "predicted_subjects": [
+      "original_AT8"
+    ]
+  },
+  "structures": [
+    {
+      "state": "unphosphorylated",
+      "file": "unphosphorylated.cif",
+      "sha256": "a47702f64d3c3d607a9a192db5484da2af571188fce4751c124e4e9cde6fc126"
+    },
+    {
+      "state": "pS202_pT205",
+      "file": "pS202_pT205.cif",
+      "sha256": "635a4f21cb3497d0c9fde8b436543a004349fea4b7ecb2acbb2a5a5edc330b49"
+    },
+    {
+      "state": "pS202_pT205_pS208",
+      "file": "pS202_pT205_pS208.cif",
+      "sha256": "cfc1d04b5aa88ac2d8805880003e8f0404a1691d8addedd21fb7577e2323f011"
+    }
+  ],
+  "reference_sha256": "3b31d8c3366aa40448787e3d86c1553a8b8531b4faf305bdd9aaabc472534d08",
+  "parameters": {
+    "tau_start": 195,
+    "tau_end": 214,
+    "contact_cutoff_A": 4.5,
+    "near_cutoff_A": 4.0
+  },
+  "reference_provenance": "Prepared Fv/Tau selection from PDB 5E2W; three Asp1 sidechain atoms repaired from 5E2V. Selected 225 Fv CA and shared Tau202-209 CA only.",
+  "usage": {
+    "compute_seconds": 246,
+    "job_attempts": 6,
+    "model_requests": 8,
+    "model_tokens": 148894
+  },
+  "steps": [
+    {
+      "tool": "prepare_at8_states",
+      "parameters": {
+        "antibody_form": "Fv",
+        "msa_mode": "server",
+        "states": [
+          {
+            "name": "unphosphorylated",
+            "phosphorylated_positions": []
+          },
+          {
+            "name": "pS202_pT205",
+            "phosphorylated_positions": [
+              202,
+              205
+            ]
+          },
+          {
+            "name": "pS202_pT205_pS208",
+            "phosphorylated_positions": [
+              202,
+              205,
+              208
+            ]
+          }
+        ],
+        "subjects": [
+          "original_AT8"
+        ],
+        "tau_end": 214,
+        "tau_start": 195,
+        "timeout_seconds": 600
+      },
+      "status": "SUCCEEDED",
+      "seconds": 0.21668290000525303
+    },
+    {
+      "tool": "boltz2_predict",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "status": "SUCCEEDED",
+      "seconds": 71.4018526924774
+    },
+    {
+      "tool": "boltz2_predict",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "status": "SUCCEEDED",
+      "seconds": 93.88927729334682
+    },
+    {
+      "tool": "boltz2_predict",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "status": "SUCCEEDED",
+      "seconds": 76.50479545816779
+    },
+    {
+      "tool": "measure_predictions",
+      "parameters": {
+        "contact_cutoff_A": 4.5,
+        "near_cutoff_A": 4.0,
+        "timeout_seconds": 600
+      },
+      "status": "SUCCEEDED",
+      "seconds": 0.6306905999954324
+    },
+    {
+      "tool": "grounded_report",
+      "parameters": {
+        "conclusion": "inconclusive",
+        "interpretations": [
+          {
+            "fact_ids": [
+              "prediction_0_Tau_CA_RMSD_after_Fv_fit_A",
+              "prediction_1_Tau_CA_RMSD_after_Fv_fit_A",
+              "prediction_2_Tau_CA_RMSD_after_Fv_fit_A"
+            ],
+            "id": "interp_tau_placement",
+            "kind": "interpretation",
+            "metric": null,
+            "subject": null,
+            "text": "在全部225个Fv CA原子叠合后，三状态共享Tau202-209 CA的肽段位置误差均大于6 Å，且三组各仅一个计算样本；描述性范围虽有方向差异但未做统计检验，不能据此推断磷酸化对肽段定位的影响。",
+            "unit": null,
+            "value": null
+          },
+          {
+            "fact_ids": [
+              "prediction_0_antibody_peptide_residue_pair_contacts",
+              "prediction_1_antibody_peptide_residue_pair_contacts",
+              "prediction_2_antibody_peptide_residue_pair_contacts",
+              "prediction_1_phosphate_atom_residue_pair_contacts",
+              "prediction_2_phosphate_atom_residue_pair_contacts",
+              "prediction_0_phosphate_atom_residue_pair_contacts"
+            ],
+            "id": "interp_contacts",
+            "kind": "interpretation",
+            "metric": null,
+            "subject": null,
+            "text": "固定4.5 Å阈值下三状态抗体-肽段残基接触数处于同一量级；磷酸原子接触在pS202/pT205样本为10而其余两个样本为0，未修饰肽段本身无磷酸原子，因此该零值不能作为状态选择性的证据，磷酸接触仅作坐标读数保留。",
+            "unit": null,
+            "value": null
+          },
+          {
+            "fact_ids": [
+              "prediction_0_iptm",
+              "prediction_1_iptm",
+              "prediction_2_iptm",
+              "prediction_0_complex_plddt",
+              "prediction_1_complex_plddt",
+              "prediction_2_complex_plddt"
+            ],
+            "id": "interp_confidence_limit",
+            "kind": "limitation",
+            "metric": null,
+            "subject": null,
+            "text": "模型置信分数仅反映预测结构内部一致性，不是亲和力或磷酸化特异性的测量；本轮为Fv与未加标签肽段的单seed预测，与公开SPR所用的Fab及带biotin/PEG4肽段条件不同，不能外推为实验KD差异。",
+            "unit": null,
+            "value": null
+          }
+        ],
+        "research_review": {
+          "evidence_fact_ids": [
+            "prediction_0_Tau_CA_RMSD_after_Fv_fit_A",
+            "prediction_1_Tau_CA_RMSD_after_Fv_fit_A",
+            "prediction_2_Tau_CA_RMSD_after_Fv_fit_A",
+            "prediction_1_phosphate_atom_residue_pair_contacts",
+            "prediction_2_phosphate_atom_residue_pair_contacts",
+            "prediction_1_iptm"
+          ],
+          "next_test": {
+            "disposition": "defer",
+            "outcomes": [
+              "若新seed的Tau位置误差与接触计数仍落在与原样本相近的范围，且状态间方向差异不一致，则现有单样本差异可归因于采样波动，报告应维持描述性结论",
+              "若新seed使各状态的肽段位置误差与接触计数范围发生明显位移或反转，则说明当前单样本读数不足以支持任何状态间比较，需扩大采样或改写结论"
+            ],
+            "question": "对三状态各追加一个不同seed（保持Fv、Tau195-214、server MSA、sampling_steps 200、recycling 3、diffusion_samples 1、potentials 一致），再合并测量，检验现有单样本范围差异是否在采样波动内稳定复现。",
+            "reason": "完整随访轮需compute_seconds约8400，超过剩余6473，job_attempts估算5触及剩余上限；按资源预算延期，不作为已完成检验。",
+            "tool_id": "boltz2_predict"
+          },
+          "reason": "三状态配对预测与合并测量已完成，fact_bundle覆盖全部成功样本且无未测量结构，可以交付描述性参考比较。但每状态只有seed 42的一个计算样本，无法评估采样离散度；matched_followup_round估算需compute_seconds 8400，超过剩余6473，job_attempts估算5恰等于剩余上限，故增加seed的敏感性检验因算力预算不足而延期，采样不确定性保持未量化，不宣称重复信息价值低。",
+          "stop_basis": "resource_blocked"
+        },
+        "timeout_seconds": 600
+      },
+      "status": "SUCCEEDED",
+      "seconds": 0.22273300000233576
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "design": "posthoc_fixed_sequence_same_scientific_parameters",
+  "scientific_parameters_matched": true,
+  "agent": {
+    "wall_seconds": 430.227945,
+    "tool_seconds": 242.86603194399504,
+    "compute_seconds": 246,
+    "job_attempts": 6,
+    "model_requests": 8,
+    "model_tokens": 148894,
+    "engineering_interventions": 0
+  },
+  "fixed_sequence": {
+    "design": "posthoc_fixed_sequence_same_scientific_parameters",
+    "ended_utc": "2026-10-30T05:27:20.973828+00:00",
+    "human_time_measured": false,
+    "job_attempts": 6,
+    "max_jobs": 6,
+    "max_tool_seconds": 7200,
+    "model_requests": 0,
+    "model_tokens": 0,
+    "setup_time_measured": false,
+    "started_utc": "2026-10-30T05:20:35.121797+00:00",
+    "steps": [
+      {
+        "exit_code": 0,
+        "seconds": 0.4230277999995451,
+        "status": "SUCCEEDED",
+        "tool": "prepare_at8_states"
+      },
+      {
+        "exit_code": 0,
+        "seconds": 140.9262138195336,
+        "status": "SUCCEEDED",
+        "tool": "boltz2_predict"
+      },
+      {
+        "exit_code": 0,
+        "seconds": 75.48571857158095,
+        "status": "SUCCEEDED",
+        "tool": "boltz2_predict"
+      },
+      {
+        "exit_code": 0,
+        "seconds": 143.19159647542983,
+        "status": "SUCCEEDED",
+        "tool": "boltz2_predict"
+      },
+      {
+        "exit_code": 0,
+        "seconds": 0.629691999998613,
+        "status": "SUCCEEDED",
+        "tool": "measure_predictions"
+      },
+      {
+        "exit_code": 0,
+        "seconds": 0.22040169999672798,
+        "status": "SUCCEEDED",
+        "tool": "grounded_report"
+      }
+    ],
+    "successful_jobs": 6,
+    "tool_seconds": 360.87665036653925,
+    "wall_seconds": 405.8520407676697
+  },
+  "metric_checks": [
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "antibody_peptide_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "phosphate_atom_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "minimum_antibody_peptide_distance_A",
+      "difference": 2.5106946647923678e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "Fv_CA_fit_RMSD_A",
+      "difference": 1.6817446381045542e-06
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "Tau_CA_RMSD_after_Fv_fit_A",
+      "difference": 2.9402447855986225e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "Fv_fit_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "shared_Tau_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "contact_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "near_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "confidence_score",
+      "difference": 2.491474151611328e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "iptm",
+      "difference": 1.7523765563964844e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "ptm",
+      "difference": 1.0967254638671875e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "complex_plddt",
+      "difference": 3.540515899658203e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "complex_iplddt",
+      "difference": 6.41942024230957e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "ligand_iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "protein_iptm",
+      "difference": 1.7523765563964844e-05
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "pair_chains_iptm_0_2",
+      "difference": 0.0004897117614746094
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "pair_chains_iptm_1_2",
+      "difference": 0.00045490264892578125
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "pair_chains_iptm_2_0",
+      "difference": 0.00019401311874389648
+    },
+    {
+      "subject": "original_AT8/pS202_pT205_pS208/model_0",
+      "metric": "pair_chains_iptm_2_1",
+      "difference": 9.202957153320312e-05
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "antibody_peptide_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "phosphate_atom_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "minimum_antibody_peptide_distance_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "Fv_CA_fit_RMSD_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "Tau_CA_RMSD_after_Fv_fit_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "Fv_fit_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "shared_Tau_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "contact_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "near_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "confidence_score",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "ptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "complex_plddt",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "complex_iplddt",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "ligand_iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "protein_iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "pair_chains_iptm_0_2",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "pair_chains_iptm_1_2",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "pair_chains_iptm_2_0",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/unphosphorylated/model_0",
+      "metric": "pair_chains_iptm_2_1",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "antibody_peptide_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "phosphate_atom_residue_pair_contacts",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "antibody_peptide_heavy_atom_pairs_below_near_cutoff",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "minimum_antibody_peptide_distance_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "Fv_CA_fit_RMSD_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "Tau_CA_RMSD_after_Fv_fit_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "Fv_fit_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "shared_Tau_CA_count",
+      "difference": 0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "contact_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "near_cutoff_A",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "confidence_score",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "ptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "complex_plddt",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "complex_iplddt",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "ligand_iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "protein_iptm",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "pair_chains_iptm_0_2",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "pair_chains_iptm_1_2",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "pair_chains_iptm_2_0",
+      "difference": 0.0
+    },
+    {
+      "subject": "original_AT8/pS202_pT205/model_0",
+      "metric": "pair_chains_iptm_2_1",
+      "difference": 0.0
+    }
+  ],
+  "maximum_metric_difference": 0.0004897117614746094,
+  "coordinate_identity": [
+    {
+      "file": "input_model_0.cif",
+      "matches_original_case_sha256": true
+    },
+    {
+      "file": "input_model_0.cif",
+      "matches_original_case_sha256": true
+    },
+    {
+      "file": "input_model_0.cif",
+      "matches_original_case_sha256": false
+    }
+  ],
+  "interpretation": "Post-hoc execution comparison, not independent method selection. One run per route, sequential in different time windows; GPU/MSA/network variation remains. Human setup time was not measured. Fixed sequence costs zero planner tokens; no demonstrated human-time or scientific-quality improvement."
+}

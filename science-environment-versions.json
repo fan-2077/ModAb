@@ -1,0 +1,9 @@
+{
+  "biopython": "1.84",
+  "boltz": "2.2.1",
+  "gemmi": "0.6.5",
+  "numpy": "1.26.4",
+  "pytorch-lightning": "2.5.0",
+  "rdkit": "2026.9.1",
+  "torch": "2.6.0+cu126"
+}

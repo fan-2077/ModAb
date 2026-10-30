@@ -1,0 +1,307 @@
+{
+  "round1": [
+    {
+      "job_id": "job_fadf4f2d0d294128ba36d9bdba8160a702bdec80d76b46b910fcd58046535c31",
+      "maximum_absolute_difference": 5.551115123125783e-17,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.48233541872498087,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 8.401705266810426,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "antibody_peptide_residue_pair_contacts": 69,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.471972159673325,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "unphosphorylated",
+        "phosphorylated_positions": []
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_43eda7762e548260c04f8ca500dfc49be97c99d80f9d31dfc8c896b95523fa2c",
+      "maximum_absolute_difference": 8.881784197001252e-16,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.38942930972604134,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.550382326242613,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "antibody_peptide_residue_pair_contacts": 65,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.4156644572663653,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 11,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205",
+        "phosphorylated_positions": [
+          202,
+          205
+        ]
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_b720bdb02270cf85f9143d318697c263cd2ebb99bd4f7228efa217d54bb8e507",
+      "maximum_absolute_difference": 0.0,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.47761846695625615,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 9.37619664559224,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 146,
+        "antibody_peptide_residue_pair_contacts": 72,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.4173990395877962,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "unphosphorylated",
+        "phosphorylated_positions": []
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_df9f3ec66bfc649911dfcd2e15776e0f5b5cdfa346a74c5b96a680c5a20f8de7",
+      "maximum_absolute_difference": 0.0,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.4050359594772918,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 5.23921268029308,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 150,
+        "antibody_peptide_residue_pair_contacts": 60,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.448691104957912,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 9,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_bff7c60db7f032eee07d67c3dbb00c66c0cacec84231179f55980f725f1f18f5",
+      "maximum_absolute_difference": 0.0,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.33565901041687995,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1382051626467735,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 132,
+        "antibody_peptide_residue_pair_contacts": 61,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.421645133912068,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_23771a7f27e6b686858dc319d2f0e3878796941f0250ac27af0cd5ffce77847a",
+      "maximum_absolute_difference": 0.0,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.38490590674858904,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1464846993645965,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 152,
+        "antibody_peptide_residue_pair_contacts": 56,
+        "contact_cutoff_A": 5,
+        "minimum_antibody_peptide_distance_A": 2.440397685747141,
+        "near_cutoff_A": 4,
+        "phosphate_atom_residue_pair_contacts": 1,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "timeout_seconds": 1800,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205",
+        "phosphorylated_positions": [
+          202,
+          205
+        ]
+      },
+      "subject": "original_AT8"
+    }
+  ],
+  "round2": [
+    {
+      "job_id": "job_5cd072e5cc5523607d45bca4327e6f84f16c9ca7134126ce01da07a738a05e9c",
+      "maximum_absolute_difference": 5.551115123125783e-17,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.48233541872498087,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 8.401705266810426,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "antibody_peptide_residue_pair_contacts": 48,
+        "contact_cutoff_A": 4.5,
+        "minimum_antibody_peptide_distance_A": 2.471972159673325,
+        "near_cutoff_A": 4.0,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "unphosphorylated",
+        "phosphorylated_positions": []
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_184bf5ba311a1646037ba9244bc99a0af223e5c9c002ae508273ab4a06d04b44",
+      "maximum_absolute_difference": 8.881784197001252e-16,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.38942930972604134,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.550382326242613,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 149,
+        "antibody_peptide_residue_pair_contacts": 55,
+        "contact_cutoff_A": 4.5,
+        "minimum_antibody_peptide_distance_A": 2.4156644572663653,
+        "near_cutoff_A": 4.0,
+        "phosphate_atom_residue_pair_contacts": 10,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205",
+        "phosphorylated_positions": [
+          202,
+          205
+        ]
+      },
+      "subject": "original_AT8"
+    },
+    {
+      "job_id": "job_b501b8477a2823421ede5bf1e64c53a60e09e03c35aa5c4829ecfe51d06c3d39",
+      "maximum_absolute_difference": 0.0,
+      "metrics": {
+        "Fv_CA_fit_RMSD_A": 0.33565901041687995,
+        "Fv_fit_CA_count": 225,
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1382051626467735,
+        "antibody_peptide_heavy_atom_pairs_below_near_cutoff": 132,
+        "antibody_peptide_residue_pair_contacts": 47,
+        "contact_cutoff_A": 4.5,
+        "minimum_antibody_peptide_distance_A": 2.421645133912068,
+        "near_cutoff_A": 4.0,
+        "phosphate_atom_residue_pair_contacts": 0,
+        "shared_Tau_CA_count": 8
+      },
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "timeout_seconds": 2400,
+        "use_potentials": true
+      },
+      "sample": "0",
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "subject": "original_AT8"
+    }
+  ],
+  "note": "round2 repeats seed42 structures from round1; do not pool as new independent samples"
+}

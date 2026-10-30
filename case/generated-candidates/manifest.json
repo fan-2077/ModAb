@@ -1,0 +1,26 @@
+[
+  {
+    "candidate_id": "candidate-01",
+    "file": "candidate-01.cif",
+    "sha256": "1aee6676979d590e2706d708852b74fa59f7408c6bea7409f4db03f41e76cda8",
+    "stage": "BoltzGen generated coordinates; not independent state prediction"
+  },
+  {
+    "candidate_id": "candidate-02",
+    "file": "candidate-02.cif",
+    "sha256": "7fade6a0149879f84b8b673fcb655ad50899e2c13b83d7c07a167448b746e3b6",
+    "stage": "BoltzGen generated coordinates; not independent state prediction"
+  },
+  {
+    "candidate_id": "candidate-03",
+    "file": "candidate-03.cif",
+    "sha256": "b4d893a953750520f8ad6143af78ecf07e8892ff8b3ca6c38a26fa38bceee4d9",
+    "stage": "BoltzGen generated coordinates; not independent state prediction"
+  },
+  {
+    "candidate_id": "candidate-04",
+    "file": "candidate-04.cif",
+    "sha256": "94d5c90a9b0b7e5618fae8987b0d14d24466259031662caa46d5c012dd6e3958",
+    "stage": "BoltzGen generated coordinates; not independent state prediction"
+  }
+]
