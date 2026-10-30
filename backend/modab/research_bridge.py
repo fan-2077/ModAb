@@ -18,6 +18,7 @@ if __package__ in (None, ""):
 
 from dualctx.contracts import ContractError, canonical_hash, require_id
 from modab.project_store import ProjectStore, UNVERIFIED_EXTERNAL
+from modab.scientific_tools import scientific_tool_catalog
 
 MAX_BYTES = 65536
 SCHEMA = "modab_research_response_v1"
@@ -94,6 +95,7 @@ def snapshot(config):
                 "provenance": "Reviewed local source snapshot dated 2026-10-27; not a new literature or remote-environment check"},
         },
         "methods": config["methods"],
+        "scientific_tool_candidates": scientific_tool_catalog(),
         "candidate_ids": ids,
         "executable_actions": ["reuse_evidence", "prepare_requirements"],
         "execution_boundary": "Local evidence packaging and requirement preparation only. No new scientific inference, installation, optimization or GPU job is available through these tools.",

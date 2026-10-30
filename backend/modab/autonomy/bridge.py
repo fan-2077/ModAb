@@ -20,6 +20,7 @@ def invoke(config, operation, body):
         exact(args, set())
         state = public_state(config)
         result = {'profiles': state['profiles'], 'tools': state['catalog'],
+            'scientific_tool_candidates': state['scientific_tool_candidates'],
             'user_control_url': f"http://127.0.0.1:{config['port']}/", 'approval_is_model_tool': False}
     elif operation == 'draft':
         exact(args, {'profile_id', 'objective', 'request_id'})

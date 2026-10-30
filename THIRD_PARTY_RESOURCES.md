@@ -28,3 +28,7 @@
 作者已于 2026-10-30 选择公开仓库及 MIT 许可证。自研代码和配套文档的许可见根目录 LICENSE，第三方代码、模型资产和在线服务继续适用原有条款。公开仓库：https://github.com/fan-2077/ModAb 。
 
 已公开的内容包括自研运行代码、适配契约、测试、坐标重测脚本、匿名案例与技术文档。分发包不含凭据、用户账户数据库或第三方权重。
+
+## 扩展候选方法
+
+RFD4-Proteina、RFantibody、ProteinMPNN、LigandMPNN、SIpHAB、Proton-PottsMPNN 纳入研究规划候选。用途与官方链接见 `backend/modab/scientific_tools.py`；这些候选的代码、权重和运行环境不包含在分发包中，实际接入时分别遵循其上游许可与资产条款。BoltzGen 与 Boltz-2 的案例使用说明见上表。

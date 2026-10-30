@@ -110,7 +110,8 @@ def summarize(mission):
 def state(config):
     raw = public_state(config)
     return {'schema': 'modab_workbench_v1', 'workspacePath': Path(__file__).resolve().parents[3].as_posix(), 'missions': [summarize(m) for m in raw['missions']],
-            'profiles': raw['profiles'], 'catalog': raw['catalog']}
+            'profiles': raw['profiles'], 'catalog': raw['catalog'],
+            'scientific_tool_candidates': raw['scientific_tool_candidates']}
 
 
 def structure(config, mission_id, asset_id):

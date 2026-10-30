@@ -7,7 +7,7 @@ const entry = fileURLToPath(new URL('../backend/modab/autonomy/bridge.py', impor
 const object = properties => ({ type: 'object', properties, required: Object.keys(properties), additionalProperties: false });
 const text = { type: 'string' };
 export const definitions = [
-  ['catalog', 'modab_research_task_catalog', 'Read verified task profiles, tool readiness and the local task-control link. No task is started.', object({})],
+  ['catalog', 'modab_research_task_catalog', 'Read task profiles, runtime tool readiness, documented scientific method candidates (including RFD4-Proteina) and the local task-control link. Candidate methods are planning options, not executable adapters. No task is started.', object({})],
   ['draft', 'modab_draft_research_task', 'Save a research objective against one available data/resource profile. This does not approve or start work. Tell the user the task ID and control link; do not claim approval.', object({ profile_id: text, objective: text, request_id: text })],
   ['query', 'modab_query_research_task', 'Recover persistent task progress, actual tool receipts, resource accounting and validated reports. Closing a chat does not cancel a commissioned task.', object({ mission_id: text })],
 ];

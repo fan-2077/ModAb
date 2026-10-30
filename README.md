@@ -16,6 +16,24 @@ ModAb 将研究讨论、任务委托、计算执行、结构测量和结果追�
 
 两份完整技术报告：[AI+医学](docs/ModAb_AI医学_技术报告_v2.pdf)、[AI+开源](docs/ModAb_AI开源_技术报告_v2.pdf)。
 
+## 科学工具候选与工作流
+
+目录覆盖七组、八种方法和十类工作流；MPNN 组包含 ProteinMPNN 与 LigandMPNN。已接入案例与扩展候选分开标记，运行任务仍使用已配置的执行接口。
+
+|工具 / 方法|主要功能|ModAb 状态|
+|---|---|---|
+|[RFD4-Proteina](https://github.com/RosettaCommons/RFD4-Proteina/blob/aaccdd2ad0720c180468df5f9cf037a713d403e5/skills/rfd4-proteina-generate/SKILL.md)|蛋白结合物、逆折叠、基序支架、小分子结合蛋白；可扩展至酶与 DNA 结合物|扩展候选|
+|[BoltzGen](https://github.com/HannesStark/boltzgen)|结合物与抗体生成、约束改造、肽及环肽相关设计|已接入案例|
+|[RFantibody](https://github.com/RosettaCommons/RFantibody)|抗体与纳米抗体从头设计，骨架生成、序列设计和结构筛选|扩展候选|
+|[ProteinMPNN / LigandMPNN](https://github.com/dauparas/ProteinMPNN)|固定骨架序列设计、局部重设计与配体环境感知的序列优化|扩展候选|
+|[Boltz-2](https://github.com/jwohlwend/boltz/blob/v2.2.1/docs/prediction.md)|复合物结构预测、修饰残基输入与匹配状态结构比较|已接入案例|
+|[SIpHAB](https://pmc.ncbi.nlm.nih.gov/articles/PMC11409498/)|基于抗体序列提出 pH 敏感的组氨酸突变候选|扩展候选|
+|[Proton-PottsMPNN](https://github.com/christian-creator/ProtonPottsMPNN)|考虑质子化状态的 pH 响应结合蛋白序列重设计|扩展候选|
+
+十类工作流：通用蛋白结合物设计、抗体与纳米抗体设计、已有候选约束改造、pH 依赖性设计、磷酸化选择性研究、肽与环肽相关设计、固定骨架序列设计、功能片段与基序支架设计、小分子结合蛋白设计、已有候选评价与比较。
+
+目录源码为 [scientific_tools.py](backend/modab/scientific_tools.py)。研究上下文与任务目录返回 `scientific_tool_candidates`，供 Agent 讨论方法和组合路线；候选条目不会自动注册为可执行适配器。
+
 ## 1. 无网络查看真实案例
 
 需要 Python 3.11 或更新版本。查看器仅使用 Python 标准库，不需要 GPU 或 API。

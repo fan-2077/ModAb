@@ -15,6 +15,7 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from dualctx.contracts import ContractError
+from modab.scientific_tools import scientific_tool_catalog
 from modab.autonomy.adapters import Registry
 from modab.autonomy.contracts import TERMINAL, atomic_json, parse, read
 from modab.autonomy.controller import Controller
@@ -39,7 +40,8 @@ def public_state(config):
         return {'profiles': {key: {'label': p['label'], 'description': p['description'],
             'activation_ready': p['activation_ready'], 'commission': p['commission']} for key, p in config['profiles'].items()},
             'missions': [store.snapshot(m['mission_id']) for m in store.missions()],
-            'catalog': Registry(config).catalog()}
+            'catalog': Registry(config).catalog(),
+            'scientific_tool_candidates': scientific_tool_catalog()}
 
 
 def run(config):
