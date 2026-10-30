@@ -1,0 +1,2 @@
+# Preserve byte identity for the reproducibility manifest on every platform.
+* -text
