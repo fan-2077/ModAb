@@ -1,0 +1,206 @@
+{
+  "runs": [
+    {
+      "mission_id": "research_58aa1a74de17d0fe03e75761e6752fe01dca75dccec06341646ce3910457d5cc",
+      "status": "BUDGET_EXHAUSTED",
+      "usage": {
+        "compute_seconds": 158,
+        "job_attempts": 5,
+        "model_requests": 7,
+        "model_tokens": 352916
+      },
+      "decisions": [
+        {
+          "sequence": 1,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "diagnose_pose",
+          "reason": "任务委托要求先诊断全部六个已保留的无模板预测，而不是直接校准。当前以AT8实验参考结构为共同对照，将同一抗体Fv框架下的不同磷酸化状态与不同seed的预测配对比较；评价口径为5 Å残基对接触、4 Å重原子近接触、[4,4.5,5,6] Å阈值敏感性，并分别检查磷酸基团完整性、肽段独立拟合形状、抗体框架下质心偏移与相对转角，以区分“肽段形状接近但姿态随seed反转”和“磷酸基团/输入缺陷或阈值依赖”两类解释。",
+          "error": null
+        },
+        {
+          "sequence": 2,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "prepare_pose_calibration",
+          "reason": "已有诊断覆盖全部六个无模板预测：磷酸化样本的完整磷酸基团数与期望数一致（如三磷酸化 seed7/42 均为3/3，双磷酸化均为2/2），说明输入化学与磷酸基团未见缺失；但三磷酸化种子间肽段独立拟合形状已接近参考（0.51/0.84 Å），而在225个Fv CA框架拟合后Tau质心偏移达2.62/4.10 Å、相对转角达158.7°/153.8°，双磷酸化也呈较大转角与质心差。这支持“肽段形状近似但相对抗体位置/方向随种子变化”的姿态解释，而非单纯阈值效应，因为[4,4.5,5,6] Å接触计数虽随阈值增加但种子间磷酸接触从9到0不等。下一步按委托对原始AT8三磷酸化输入生成soft_template条件校准，保持序列和采样设置不变，为随后同seed42/7的前后配对比较提供可检验的修复输入。",
+          "error": null
+        },
+        {
+          "sequence": 3,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "boltz2_predict",
+          "reason": "诊断已覆盖全部六个无模板预测：磷酸基团完整性与期望数一致，未磷酸化对照无磷酸基团；三磷酸化样本的Tau202–209独立拟合形状已接近参考（seed7为0.51 Å、seed42为0.84 Å），但抗体框架拟合后质心偏移和相对转角较大且随seed变化，双磷酸化也呈较大转角。这支持“肽段形状近似但相对抗体的位置/方向随种子变化”的姿态解释，而非磷酸基团缺失或单纯阈值效应；接触计数在4–6 Å阈值下随种子和状态变化。已知结构soft_template校准输入已准备好，现按委托以原seed42在保持200 sampling_steps、3 recycling_steps、1 diffusion_sample、use_potentials=true、msa_mode=server及Fv两链与Tau195–214序列不变下生成第一个校准预测，用于同seed前后姿态配对比较；该结果仅作为条件校准，不代表无模板预测准确或亲和力。",
+          "error": null
+        },
+        {
+          "sequence": 4,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "boltz2_predict",
+          "reason": "诊断已覆盖六个无模板基线；三磷酸化样本的磷酸基团完整性为3/3，但Tau202–209在独立拟合后形状已接近参考，而抗体框架拟合后质心偏移与相对转角随seed差异明显，支持“肽段形状近似但相对抗体的位置/方向随seed变化”的姿态解释。soft_template条件输入已生成，seed42校准预测已完成；现按委托以原seed7、相同采样设置生成第二个也是最后一个校准预测，随后将六个基线与两个校准预测一起diagnose_pose，比较同seed前后位置、方向、形状和接触。竞争解释为：若seed7校准后质心/转角向参考收敛且与seed42方向一致，支持条件校准改善姿态；若两seed变化方向不一致或位置/方向未改善，则记录阴性结果，不据此声称无模板预测准确或亲和力。保留全部原始预测，不重跑基线。",
+          "error": null
+        },
+        {
+          "sequence": 5,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "diagnose_pose",
+          "reason": "六个无模板基线已完成诊断，三磷酸化输入也已按委托完成soft_template校准并生成seed42和seed7两个预测。当前必须把六个基线与两个校准预测放在同一次diagnose_pose中，保持5 Å残基对接触、4 Å重原子近接触、[4,4.5,5,6] Å敏感性检查以及Tau202–209的独立形状拟合和Fv框架拟合口径不变。竞争解释为：(a) 若同seed校准后质心偏移和相对转角向实验参考收敛、两seed方向一致，则支持已知结构条件校准改善了相对姿态而非仅改变形状；(b) 若形状仍接近但位置/方向未收敛或两seed方向相反，则校准未解决姿态不确定，应记录阴性结果。该比较同时核对完整磷酸基团数和阈值敏感性，避免把阈值效应误读为姿态改善；保留全部原始预测，不重跑基线。",
+          "error": null
+        },
+        {
+          "sequence": 6,
+          "status": "REJECTED",
+          "action": null,
+          "tool": null,
+          "reason": null,
+          "error": "MODEL_JSON_DELIVERY: Unterminated string starting at: line 1 column 3631 (char 3630)"
+        },
+        {
+          "sequence": 7,
+          "status": "REJECTED",
+          "action": "run_tool",
+          "tool": "grounded_report",
+          "reason": "六个无模板基线与两个soft_template校准预测已在同一次diagnose_pose中合并测量（fact_bundle artifact_6fb2c474…）；现在按委托用grounded_report交付。当前事实显示：所有磷酸化样本的完整磷酸基团数与期望数一致（三磷酸化3/3、双磷酸化2/2、未磷酸化0/0），输入化学没有缺失；三磷酸化基线在独立拟合后形状已接近参考（seed7=0.51 Å、seed42=0.84 Å），但抗体框架拟合后质心偏移（2.62/4.10 Å）和相对转角（158.7°/153.8°）随seed变化，支持“肽段形状近似而相对位置和方向随种子改变”的解释，而非阈值或磷酸基团缺陷。竞争解释是已知结构软模板校准能纠正该姿态散布。配对结果不支持这一解释：seed7校准后质心偏移增加1.58 Å、独立拟合形状RMSD增加0.38 Å、转角只减小19.4°，seed42质心偏移仅减小0.06 Å、形状RMSD增加0.24 Å、转角增加0.9°，两个seed方向不一致，且界面置信度pair_chains_iptm(0,2)由约0.76/0.60降至0.49/0.36。作为条件校准的阴性结果原样报告，不据此声称无模板预测精度或亲和力。",
+          "error": "RESEARCH_REVIEW: Cite fact IDs from this report bundle"
+        }
+      ],
+      "jobs": [
+        {
+          "job_id": "job_940f57517160e6194fde309c4da59cef409abd86d407d512b7de426c68652ce6",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 1.0400525999975798
+        },
+        {
+          "job_id": "job_ccbca0f88a5d7a22dec1fbf883f796ef63a96e34703ea437aca0bdeaedef2be1",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 0.42905400000017835
+        },
+        {
+          "job_id": "job_6fcea959e6ace116a0b3650b08e667a45e90228ea40039aa8cb8d06f2ca1b13c",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 77.15495004691184
+        },
+        {
+          "job_id": "job_96e771864834b297699eb602203bd22ef25a6237d58487067a4830c85f16c2b6",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 74.64768820535392
+        },
+        {
+          "job_id": "job_ad15e17a65b98165a937855692a6b072dc7b821d259a4ab2777d3f7762e8b7b5",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 1.2414026999977068
+        }
+      ]
+    },
+    {
+      "mission_id": "research_cb04c9d595fd1fce5c6a3ceaecb26cf534b6e3337b1ba79580f0cb44b374d697",
+      "status": "COMPLETED_WITH_LIMITATIONS",
+      "usage": {
+        "compute_seconds": 164,
+        "job_attempts": 5,
+        "model_requests": 7,
+        "model_tokens": 362189
+      },
+      "decisions": [
+        {
+          "sequence": 1,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "prepare_pose_calibration",
+          "reason": "两条路线中，软模板阴性结果已表明仅提供模板特征不会强制骨架接近已知结构；方法核对也显示模板已加载、MSA 内容相同且软模板不激活骨架势。用户关心平台在已知结合结构条件下能否生成带明确约束的模型，因此选择 restrained_template 作为有界诊断，而不是重复软模板或只增加无模板种子。以 2 Å 骨架容差检验条件建模能力；该容差是施加先验的约束参数，不是独立准确性阈值，改善只能解释为条件化恢复，不能作为结合力、选择性或盲预测证据。后续保持 200 采样、3 循环、1 样本、use_potentials=true 和 server MSA 不变，并保留全部软模板阴性和原始样本。",
+          "error": null
+        },
+        {
+          "sequence": 2,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "boltz2_predict",
+          "reason": "restrained_template 条件输入已由 prepare_pose_calibration 生成（2 Å 骨架容差），现需在与软模板基线匹配的设置下完成条件预测。先运行 seed 7，可与同 seed 的无模板和软模板三磷酸化结果在 Fv 对齐后逐项比较；保持 200 采样、3 循环、1 样本、use_potentials=true 与 server MSA 不变。该检验回答“显式骨架约束能否在保持化学完整和接触合理的前提下生成接近给定结构的条件模型”，而不是独立预测准确性或结合力证据。",
+          "error": null
+        },
+        {
+          "sequence": 3,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "boltz2_predict",
+          "reason": "restrained_template（2 Å 骨架容差）已生成条件输入并在 seed 7 完成一次预测，但目前该样本尚未合并诊断。为在相同条件输入、相同 200 采样/3 循环/1 样本/use_potentials=true/server MSA 下获得与无模板及软模板基线可配对比较的第二个计算样本，运行 seed 42；这检验显式骨架约束能否在保持化学完整和接触合理的前提下生成接近给定结构的条件模型，改善仍只能解释为条件化恢复而非独立预测准确性、结合力或选择性。",
+          "error": null
+        },
+        {
+          "sequence": 4,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "diagnose_pose",
+          "reason": "两个 restrained_template 条件预测（seed 7 与 seed 42，2 Å 骨架容差）已在匹配设置下完成，但尚未合并诊断；现有 fact_bundle 只含此前 8 个结构，无法比较条件恢复前后。按用户要求先将其与六个无模板、两个软模板样本合并诊断，核对化学完整性、磷酸基团、Fv 对齐后 Tau 位置/形状/转角及多阈值接触，再据此报告。保持原始输入与全部样本，不重跑任何已有 seed。",
+          "error": null
+        },
+        {
+          "sequence": 5,
+          "status": "REJECTED",
+          "action": null,
+          "tool": null,
+          "reason": null,
+          "error": "MODEL_JSON_DELIVERY: Unterminated string starting at: line 1 column 1635 (char 1634)"
+        },
+        {
+          "sequence": 6,
+          "status": "REJECTED",
+          "action": null,
+          "tool": null,
+          "reason": null,
+          "error": "MODEL_JSON_DELIVERY: Unterminated string starting at: line 1 column 2107 (char 2106)"
+        },
+        {
+          "sequence": 7,
+          "status": "ACCEPTED",
+          "action": "run_tool",
+          "tool": "grounded_report",
+          "reason": "restrained_template 的条件预测（seed 7/42，2 Å 骨架容差）已完成并合并入最新 fact_bundle，当前任务剩余的是按用户授权生成收尾报告，而非继续新增样本。最新 bundle（artifact_5bc909e7…）包含 10 个结构：6 个无模板、2 个软模板、2 个 restrained_template，并含匹配前后差值（repair_0/repair_1 对应 seed42/7 的 restrained 与无模板对比，repair_2/repair_3 对应软模板对比）。restrained 条件下 Fv 对齐后 Tau RMSD 在 seed42 与 seed7 分别降至 posed 数值，且两 seed 磷酸基团完整、接触合理；但这部分是施加先验的结果，不能当作独立准确性、结合力或选择性证据。软模板两 seed 均未改善位置偏差，为阴性。因此报告把这两条结果分组呈现，保留全部阴性样本和无模板基线，并将改善解释为条件化建模能力。剩余预算足够，无需再加样本（matched_followup_round 受 job_attempts 限制），信息价值已足以作出有界结论。",
+          "error": null
+        }
+      ],
+      "jobs": [
+        {
+          "job_id": "job_1b8c7df9032fd638addb28e3804745ec1f9e36b961efa60d3c348641466cbc96",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 0.42511580000063987
+        },
+        {
+          "job_id": "job_3428b8fcfa21e6554487c9bf48f1b79ff3f9bdaa961cc038632f25bd1b14f74c",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 78.2970406729728
+        },
+        {
+          "job_id": "job_d7359a5b6b803840088ddeeaf277829345a63bdef165139cea8296ef3d8c0b94",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 80.71458240039647
+        },
+        {
+          "job_id": "job_28df436be1bcc43a49bac001575484d60913f2ad7fabff803597ff8d76fcee01",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 1.6509024999977555
+        },
+        {
+          "job_id": "job_9af653324a7b4376ac3358ee75b462bf77b957b3a3ccc7784c7488e2e7d94045",
+          "status": "SUCCEEDED",
+          "process_exit_code": 0,
+          "elapsed_seconds": 0.2204758000007132
+        }
+      ]
+    }
+  ],
+  "engineering_intervention": "The first mission exhausted its budget after report citation failures. Report feedback and evidence projection were repaired; the follow-up mission reused all existing predictions and completed with a report.",
+  "scope": "Known-structure-conditioned pose calibration; all 10 structures retained."
+}

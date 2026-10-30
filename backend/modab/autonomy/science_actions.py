@@ -143,7 +143,8 @@ def measure(inputs,params,output):
             if len(confidences)!=1:raise ContractError('Ambiguous confidence correspondence')
             conf=confidences[0]['confidence'];geo=geometry(path,reference['path'],record,params['contact_cutoff_A'],params['near_cutoff_A'])
             measured.append({'subject':record['subject'],'state':record['state'],'sample':sample,'input_sha256':record['sha256'],
-                'structure_sha256':structure['sha256'],'geometry':geo,'confidence':conf,'prediction_summary':item})
+                'structure_sha256':structure['sha256'],'geometry':geo,'confidence':conf,'prediction_summary':item,
+                'conditioning':record.get('conditioning',{'mode':'unconditioned'})})
         sources[key]={'path':item['path'],'sha256':item['sha256']}
     if not measured:raise ContractError('At least one actual prediction is required')
     import importlib.metadata,sys
@@ -151,7 +152,7 @@ def measure(inputs,params,output):
     measurement=output.parent/'measurements.json';atomic_json(measurement,{'records':measured,'parameters':params,'reference':reference,
         'reference_atom_policy':{'selected':'225 Fv CA plus 8 shared Tau CA, model 1, label numbering','ambiguity':'reject multiple coordinates for any selected atom','unique_labelled_atoms':reference_labels},
         'software':{'python':sys.version,'packages':{name:importlib.metadata.version(name) for name in ('numpy','gemmi')}},
-        'scope':'unconditioned_structure_diagnostics_not_affinity'},immutable=True)
+        'scope':'structure_diagnostics_not_affinity; conditioning is explicit per record'},immutable=True)
     sources['measurements']={'path':str(measurement.resolve()),'sha256':digest(measurement)}
     dataset_source=next(x for x in inputs.values() if x['kind']=='at8_sequence_dataset')
     sources['sequence_dataset']={k:dataset_source[k] for k in ('path','sha256')}

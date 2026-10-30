@@ -23,6 +23,9 @@ def execute(request, output):
     elif action in {'prepare_at8_states','measure_predictions'}:
         from modab.autonomy.science_actions import prepare,measure
         result=(prepare if action=='prepare_at8_states' else measure)(request['inputs'],request['parameters'],output)
+    elif action in {'diagnose_pose','prepare_pose_calibration'}:
+        from modab.autonomy.pose_diagnostics import diagnose,prepare_calibration
+        result=(diagnose if action=='diagnose_pose' else prepare_calibration)(request['inputs'],request['parameters'],output)
     elif action == 'prepare_requirements':
         source = next(x for x in request['inputs'].values() if x['kind'] == 'research_context_config')
         config = read(source['path'])

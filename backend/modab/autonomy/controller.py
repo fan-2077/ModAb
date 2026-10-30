@@ -53,6 +53,8 @@ class Controller:
                     'usable_decision':response.get('decision') is not None})
         catalog={k:v for k,v in self.registry.catalog().items() if k in snap['commission']['allowed_tools']}
         report=preferred_report(snap['reports'])
+        from .planner_context import compact_evidence
+        evidence=compact_evidence(evidence)
         return {'mission_id': mid, 'commission': snap['commission'], 'usage': snap['usage'],
             'available_inputs': inputs, 'catalog': catalog, 'evidence': evidence,
             'input_ids_by_kind':{kind:[key for key,item in inputs.items() if item['kind']==kind] for kind in sorted({item['kind'] for item in inputs.values()})},

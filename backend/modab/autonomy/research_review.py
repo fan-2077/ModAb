@@ -51,7 +51,7 @@ def observation_summary(inputs,steps,budget,usage):
         method={k:v for k,v in spec['parameters'].items() if k not in {'seed','timeout_seconds'}}
         key=r['subject']+'/'+r['state']['name']+'/'+canonical_hash([inp['sha256'],method])[:16]
         g=groups.setdefault(key,{'subject':r['subject'],'state':r['state'],'input_sha256':inp['sha256'],
-            'comparison_design':{k:r[k] for k in ('antibody_form','tau_start','tau_end','msa_mode')}
+            'comparison_design':{**{k:r[k] for k in ('antibody_form','tau_start','tau_end','msa_mode')},'conditioning':r.get('conditioning',{'mode':'unconditioned'})}
                 if all(k in r for k in ('antibody_form','tau_start','tau_end','msa_mode')) else None,
             'method_parameters':method,
             'input_ids':[k for k,v in inputs.items() if v['kind']=='boltz2_input' and v['sha256']==inp['sha256']],
@@ -96,8 +96,13 @@ def observation_summary(inputs,steps,budget,usage):
 def validate_review(review,bundle,progress,catalog,policy):
     exact(review,{'stop_basis','reason','evidence_fact_ids','next_test'})
     facts=verify_facts(bundle)
-    if not isinstance(review['evidence_fact_ids'],list) or not review['evidence_fact_ids'] or not set(review['evidence_fact_ids'])<=facts.keys():
-        raise ContractError('RESEARCH_REVIEW: Cite fact IDs from this report bundle')
+    if not isinstance(review['evidence_fact_ids'],list) or not review['evidence_fact_ids']:
+        raise ContractError('RESEARCH_REVIEW: Cite nonempty fact IDs from this report bundle')
+    unknown=set(review['evidence_fact_ids'])-facts.keys()
+    if unknown:
+        from difflib import get_close_matches
+        suggestions={k:get_close_matches(k,list(facts),n=3,cutoff=0.6)for k in sorted(unknown)}
+        raise ContractError('RESEARCH_REVIEW: Unknown fact IDs '+str(suggestions)+'; verify subject and value before choosing an existing ID; no automatic replacement was made')
     text(review['reason'],'review reason',3000)
     if review['stop_basis'] not in {'continue_research','bounded_inconclusive','resource_blocked','capability_blocked'}:
         raise ContractError('RESEARCH_REVIEW: Unknown stopping basis')

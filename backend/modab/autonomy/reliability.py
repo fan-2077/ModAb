@@ -50,14 +50,14 @@ def execution_identity(spec):
     # Timeout extension is a real repair for a timeout, but not a missing library.
     return canonical_hash({'tool_id':spec['tool_id'],'inputs':sorted((v['kind'],v['sha256']) for v in spec['inputs'].values()),
         'parameters':{k:v for k,v in spec['parameters'].items() if k!='timeout_seconds'},
-        'runtime':spec.get('runtime_identity')})
+        'runtime':spec.get('runtime_identity'),'calibration_template_sha256':spec.get('calibration_template',{}).get('sha256')})
 
 
 def runtime_identity(tool_id,config):
     root=Path(__file__).parent
-    names=['action_runner.py','science_actions.py','reports.py','contracts.py','jobs.py','input_binding.py'] if tool_id!='boltz2_predict' else ['prediction_runner.py']
+    names=['action_runner.py','science_actions.py','pose_diagnostics.py','reports.py','contracts.py','jobs.py','input_binding.py'] if tool_id!='boltz2_predict' else ['prediction_runner.py']
     packages={}
-    if tool_id=='measure_predictions':
+    if tool_id in {'measure_predictions','diagnose_pose'}:
         for name in ('numpy','gemmi'):
             try:packages[name]=version(name)
             except PackageNotFoundError:packages[name]=None

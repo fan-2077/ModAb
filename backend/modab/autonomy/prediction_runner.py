@@ -56,6 +56,7 @@ def run(request):
         records.append({'path':str(path),'sha256':sha(path),'confidence':value})
     Path('prediction-summary.json').write_text(json.dumps({'schema':'modab_boltz_prediction_v1',
         'status':'STRUCTURE_PREDICTED_NOT_BINDING_VALIDATED','input_sha256':sha('input.yaml'),
+        'parameters':request.get('parameters',{}),'conditioning':request.get('conditioning',{'mode':'unconditioned'}),
         'structures':[{'path':str(p),'sha256':sha(p)} for p in predictions],
         'confidence_records':records,'new_structure_count':len(predictions)},indent=2),encoding='utf-8')
     return 0

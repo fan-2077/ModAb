@@ -1,0 +1,947 @@
+{
+  "checks": {
+    "Fv_fit_CA_count": 225,
+    "all_phosphate_groups_complete": true,
+    "reference_self_RMSD_A": 0.0,
+    "shared_tau_CA_count": 8
+  },
+  "interpretation_policy": "Inspect chemistry first, then shape versus position and rotation, then threshold stability. Test a proposed correction on new artifacts; retain all originals. Template recovery is conditioned calibration, not blind validation or affinity.",
+  "matched_calibration_comparisons": [
+    {
+      "after_sha256": "be80605911e4b5db2c4209d8b0c5ac82b3f64b5204b0f95cb6d32da7a9c1f3d8",
+      "before_sha256": "cfc1d04b5aa88ac2d8805880003e8f0404a1691d8addedd21fb7577e2323f011",
+      "delta_after_minus_before": {
+        "Tau_CA_RMSD_after_Fv_fit_A": -4.415842168516327,
+        "Tau_best_fit_rotation_angle_deg": -124.48149220334952,
+        "Tau_centroid_shift_after_Fv_fit_A": -3.037926417573116,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.054759437806355615
+      },
+      "scope": "Matched declared parameters; MSA content identity must be checked separately.",
+      "seed": 42
+    },
+    {
+      "after_sha256": "db009ecb5ef22a1164ae0a3c7a5c23a4697c6ac717b0d547a523277e44cd09fe",
+      "before_sha256": "50b7c96dbbebaa69058a12cf387c990951e7db3b96a01c675f865be40fe75182",
+      "delta_after_minus_before": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 1.1351693091924195,
+        "Tau_best_fit_rotation_angle_deg": -19.365560843032625,
+        "Tau_centroid_shift_after_Fv_fit_A": 1.5844150605460383,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.3820233173327454
+      },
+      "scope": "Matched declared parameters; MSA content identity must be checked separately.",
+      "seed": 7
+    },
+    {
+      "after_sha256": "32ae004b1431c9d6eb88efae978693cd9b6d4f179463bf42f30412642ae2287b",
+      "before_sha256": "cfc1d04b5aa88ac2d8805880003e8f0404a1691d8addedd21fb7577e2323f011",
+      "delta_after_minus_before": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 0.0818268043069974,
+        "Tau_best_fit_rotation_angle_deg": 0.9102012569605904,
+        "Tau_centroid_shift_after_Fv_fit_A": -0.058032494158702264,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.2438854169377438
+      },
+      "scope": "Matched declared parameters; MSA content identity must be checked separately.",
+      "seed": 42
+    },
+    {
+      "after_sha256": "953bde44f0051f2e8013c107027d87a1d52a93941a11ba92a9121ab65512fc53",
+      "before_sha256": "50b7c96dbbebaa69058a12cf387c990951e7db3b96a01c675f865be40fe75182",
+      "delta_after_minus_before": {
+        "Tau_CA_RMSD_after_Fv_fit_A": -4.542457371407579,
+        "Tau_best_fit_rotation_angle_deg": -153.95758842045066,
+        "Tau_centroid_shift_after_Fv_fit_A": -2.034207745086603,
+        "Tau_shape_RMSD_after_independent_fit_A": -0.21247485720216813
+      },
+      "scope": "Matched declared parameters; MSA content identity must be checked separately.",
+      "seed": 7
+    }
+  ],
+  "method": "Kabsch proper rotation; original coordinates; Tau202-209 after 225 Fv CA fit and independent 8 CA fit; label numbering; reject ambiguous atoms",
+  "records": [
+    {
+      "conditioning": {
+        "baseline_input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+        "diagnosis_bundle_sha256": "330ab21b3e344a8caf25e4cda864227d2c405a7124e2d7e13a7c77ddc812d4f0",
+        "force": true,
+        "mode": "restrained_template",
+        "reference_sha256": "3b31d8c3366aa40448787e3d86c1553a8b8531b4faf305bdd9aaabc472534d08",
+        "scope": "known-structure-assisted calibration; not blind prediction or independent biological validation",
+        "template_tolerance_A": 2
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 1.7223629941304468,
+        "Tau_best_fit_rotation_angle_deg": 29.280797870708305,
+        "Tau_centered_RMSD_without_rotation_A": 1.3564194414689452,
+        "Tau_centroid_shift_after_Fv_fit_A": 1.0614426891523943,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.8972650035301111,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 1.034789214635035
+      },
+      "input_sha256": "ab50fc6ed0245c59c79785129db48bc4a8dd82a371a556f5cda8acd180952199",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 6.057977034365515,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 5.348729235940065,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 3.608435267605614,
+          "tau_position": 208
+        }
+      ],
+      "seed": 42,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "be80605911e4b5db2c4209d8b0c5ac82b3f64b5204b0f95cb6d32da7a9c1f3d8",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_restrained_template_seed42.cif",
+      "minimum_antibody_peptide_distance_A": 2.4233868977528132
+    },
+    {
+      "conditioning": {
+        "baseline_input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+        "diagnosis_bundle_sha256": "cf9ad0da8b1bc19899b54bcbeeeff2e95b18eadb7b541e819c6bece6be90b779",
+        "force": false,
+        "mode": "soft_template",
+        "reference_sha256": "3b31d8c3366aa40448787e3d86c1553a8b8531b4faf305bdd9aaabc472534d08",
+        "scope": "known-structure-assisted calibration; not blind prediction or independent biological validation"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.374381989485499,
+        "Tau_best_fit_rotation_angle_deg": 139.37504426838575,
+        "Tau_centered_RMSD_without_rotation_A": 4.78756208410122,
+        "Tau_centroid_shift_after_Fv_fit_A": 4.208562110597097,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.8918994784767996,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 22.125266029416427
+      },
+      "input_sha256": "e4ae727bf93f7c7b2f54425aebc2184ba0b081f794e9e90fd7b942767a150140",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 4.943037544759296,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 3.6868276081205646,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 10.29231344391532,
+          "tau_position": 208
+        }
+      ],
+      "seed": 7,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "db009ecb5ef22a1164ae0a3c7a5c23a4697c6ac717b0d547a523277e44cd09fe",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_soft_template_seed7.cif",
+      "minimum_antibody_peptide_distance_A": 2.434695306727312
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 8.401705266810426,
+        "Tau_best_fit_rotation_angle_deg": 105.57862950781008,
+        "Tau_centered_RMSD_without_rotation_A": 7.45190201387387,
+        "Tau_centroid_shift_after_Fv_fit_A": 3.880439120250773,
+        "Tau_shape_RMSD_after_independent_fit_A": 4.182489853805951,
+        "complete_phosphate_group_count": 0,
+        "expected_phosphate_group_count": 0,
+        "orientation_excess_mean_square_A2": 38.03762224718771
+      },
+      "input_sha256": "bfb006178742ac67bb8d43759b7b7f38120807d7306ed71f5d23357a0a4fc275",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "use_potentials": true
+      },
+      "phosphosites": [],
+      "seed": 42,
+      "state": {
+        "name": "unphosphorylated",
+        "phosphorylated_positions": []
+      },
+      "structure_sha256": "a47702f64d3c3d607a9a192db5484da2af571188fce4751c124e4e9cde6fc126",
+      "subject": "original_AT8",
+      "file": "unphosphorylated_unconditioned_seed42.cif",
+      "minimum_antibody_peptide_distance_A": 2.471972159673325
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.550382326242613,
+        "Tau_best_fit_rotation_angle_deg": 69.71789401130069,
+        "Tau_centered_RMSD_without_rotation_A": 5.200788928945677,
+        "Tau_centroid_shift_after_Fv_fit_A": 3.982374057833802,
+        "Tau_shape_RMSD_after_independent_fit_A": 2.724286970095428,
+        "complete_phosphate_group_count": 2,
+        "expected_phosphate_group_count": 2,
+        "orientation_excess_mean_square_A2": 19.626465988012193
+      },
+      "input_sha256": "46d70b81d093b3bdd9160b9d1be6a78bbb1b5c39a2cdb5eb868a66d3048215f0",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.4156644572663653,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.5122603988241345,
+          "tau_position": 205
+        }
+      ],
+      "seed": 42,
+      "state": {
+        "name": "pS202_pT205",
+        "phosphorylated_positions": [
+          202,
+          205
+        ]
+      },
+      "structure_sha256": "635a4f21cb3497d0c9fde8b436543a004349fea4b7ecb2acbb2a5a5edc330b49",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_unconditioned_seed42.cif",
+      "minimum_antibody_peptide_distance_A": 2.4156644572663653
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 9.37619664559224,
+        "Tau_best_fit_rotation_angle_deg": 106.13306086376751,
+        "Tau_centered_RMSD_without_rotation_A": 6.072097867191592,
+        "Tau_centroid_shift_after_Fv_fit_A": 7.144416773121687,
+        "Tau_shape_RMSD_after_independent_fit_A": 1.9923838476377493,
+        "complete_phosphate_group_count": 0,
+        "expected_phosphate_group_count": 0,
+        "orientation_excess_mean_square_A2": 32.90077911242488
+      },
+      "input_sha256": "bfb006178742ac67bb8d43759b7b7f38120807d7306ed71f5d23357a0a4fc275",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "use_potentials": true
+      },
+      "phosphosites": [],
+      "seed": 7,
+      "state": {
+        "name": "unphosphorylated",
+        "phosphorylated_positions": []
+      },
+      "structure_sha256": "d09c3ab11dfbe241c5ae096e575a27328a4de6a8c7570e0bb1114afe30ace98a",
+      "subject": "original_AT8",
+      "file": "unphosphorylated_unconditioned_seed7.cif",
+      "minimum_antibody_peptide_distance_A": 2.4173990395877962
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 5.23921268029308,
+        "Tau_best_fit_rotation_angle_deg": 158.74060511141838,
+        "Tau_centered_RMSD_without_rotation_A": 4.53466666570456,
+        "Tau_centroid_shift_after_Fv_fit_A": 2.624147050051059,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.5098761611440542,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 20.30322806934911
+      },
+      "input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.728359828028553,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 4.818348143586141,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 5.234394334103995,
+          "tau_position": 208
+        }
+      ],
+      "seed": 7,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "50b7c96dbbebaa69058a12cf387c990951e7db3b96a01c675f865be40fe75182",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_unconditioned_seed7.cif",
+      "minimum_antibody_peptide_distance_A": 2.448691104957912
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1382051626467735,
+        "Tau_best_fit_rotation_angle_deg": 153.76229007405783,
+        "Tau_centered_RMSD_without_rotation_A": 4.56866890303598,
+        "Tau_centroid_shift_after_Fv_fit_A": 4.0993691067255105,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.8425055657237555,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 20.162919917292477
+      },
+      "input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 5.39859176559962,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 7.811863122309554,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 6.7201686267756715,
+          "tau_position": 208
+        }
+      ],
+      "seed": 42,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "cfc1d04b5aa88ac2d8805880003e8f0404a1691d8addedd21fb7577e2323f011",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_unconditioned_seed42.cif",
+      "minimum_antibody_peptide_distance_A": 2.421645133912068
+    },
+    {
+      "conditioning": {
+        "mode": "unconditioned"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.1464846993645965,
+        "Tau_best_fit_rotation_angle_deg": 163.03425475884262,
+        "Tau_centered_RMSD_without_rotation_A": 4.878176831090647,
+        "Tau_centroid_shift_after_Fv_fit_A": 3.739340177642778,
+        "Tau_shape_RMSD_after_independent_fit_A": 2.5574971106816613,
+        "complete_phosphate_group_count": 2,
+        "expected_phosphate_group_count": 2,
+        "orientation_excess_mean_square_A2": 17.25581772424454
+      },
+      "input_sha256": "46d70b81d093b3bdd9160b9d1be6a78bbb1b5c39a2cdb5eb868a66d3048215f0",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 4.185491539759696,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 6.9208127201723935,
+          "tau_position": 205
+        }
+      ],
+      "seed": 7,
+      "state": {
+        "name": "pS202_pT205",
+        "phosphorylated_positions": [
+          202,
+          205
+        ]
+      },
+      "structure_sha256": "6946f0c9c343933e3349e040326c76caf847a0524c66317bbe6806f6a630091c",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_unconditioned_seed7.cif",
+      "minimum_antibody_peptide_distance_A": 2.440397685747141
+    },
+    {
+      "conditioning": {
+        "baseline_input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+        "diagnosis_bundle_sha256": "cf9ad0da8b1bc19899b54bcbeeeff2e95b18eadb7b541e819c6bece6be90b779",
+        "force": false,
+        "mode": "soft_template",
+        "reference_sha256": "3b31d8c3366aa40448787e3d86c1553a8b8531b4faf305bdd9aaabc472534d08",
+        "scope": "known-structure-assisted calibration; not blind prediction or independent biological validation"
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 6.220031966953771,
+        "Tau_best_fit_rotation_angle_deg": 154.67249133101842,
+        "Tau_centered_RMSD_without_rotation_A": 4.728255074956705,
+        "Tau_centroid_shift_after_Fv_fit_A": 4.041336612566808,
+        "Tau_shape_RMSD_after_independent_fit_A": 1.0863909826614992,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 21.176150686645613
+      },
+      "input_sha256": "e4ae727bf93f7c7b2f54425aebc2184ba0b081f794e9e90fd7b942767a150140",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 42,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 4.292387830031207,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 6.470714996690861,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.552531270738912,
+          "tau_position": 208
+        }
+      ],
+      "seed": 42,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "32ae004b1431c9d6eb88efae978693cd9b6d4f179463bf42f30412642ae2287b",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_soft_template_seed42.cif",
+      "minimum_antibody_peptide_distance_A": 2.4277834430607688
+    },
+    {
+      "conditioning": {
+        "baseline_input_sha256": "27b203f5320c2a689db9e81908019e3149c77d98db7d9a122e18ab420127d5b4",
+        "diagnosis_bundle_sha256": "330ab21b3e344a8caf25e4cda864227d2c405a7124e2d7e13a7c77ddc812d4f0",
+        "force": true,
+        "mode": "restrained_template",
+        "reference_sha256": "3b31d8c3366aa40448787e3d86c1553a8b8531b4faf305bdd9aaabc472534d08",
+        "scope": "known-structure-assisted calibration; not blind prediction or independent biological validation",
+        "template_tolerance_A": 2
+      },
+      "geometry": {
+        "Tau_CA_RMSD_after_Fv_fit_A": 0.6967553088855006,
+        "Tau_best_fit_rotation_angle_deg": 4.783016690967715,
+        "Tau_centered_RMSD_without_rotation_A": 0.3707284409351185,
+        "Tau_centroid_shift_after_Fv_fit_A": 0.589939304964456,
+        "Tau_shape_RMSD_after_independent_fit_A": 0.2974013039418861,
+        "complete_phosphate_group_count": 3,
+        "expected_phosphate_group_count": 3,
+        "orientation_excess_mean_square_A2": 0.04899204133184952
+      },
+      "input_sha256": "ab50fc6ed0245c59c79785129db48bc4a8dd82a371a556f5cda8acd180952199",
+      "parameters": {
+        "diffusion_samples": 1,
+        "msa_mode": "server",
+        "recycling_steps": 3,
+        "sampling_steps": 200,
+        "seed": 7,
+        "use_potentials": true
+      },
+      "phosphosites": [
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.68300252012554,
+          "tau_position": 202
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 2.4620216001083337,
+          "tau_position": 205
+        },
+        {
+          "atoms": [
+            "O1P",
+            "O2P",
+            "O3P",
+            "P"
+          ],
+          "complete_P_plus_3_O": true,
+          "nearest_antibody_distance_A": 3.119720688555306,
+          "tau_position": 208
+        }
+      ],
+      "seed": 7,
+      "state": {
+        "name": "pS202_pT205_pS208",
+        "phosphorylated_positions": [
+          202,
+          205,
+          208
+        ]
+      },
+      "structure_sha256": "953bde44f0051f2e8013c107027d87a1d52a93941a11ba92a9121ab65512fc53",
+      "subject": "original_AT8",
+      "file": "pS202_pT205_pS208_restrained_template_seed7.cif",
+      "minimum_antibody_peptide_distance_A": 2.4620216001083337
+    }
+  ],
+  "schema": "modab_pose_diagnosis_v1",
+  "threshold_sensitivity": [
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 44,
+      "row": 0
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 2,
+      "residue_pair_contacts": 65,
+      "row": 0
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 3,
+      "residue_pair_contacts": 77,
+      "row": 0
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 9,
+      "residue_pair_contacts": 122,
+      "row": 0
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 35,
+      "row": 1
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 46,
+      "row": 1
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 4,
+      "residue_pair_contacts": 62,
+      "row": 1
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 6,
+      "residue_pair_contacts": 103,
+      "row": 1
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 35,
+      "row": 2
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 48,
+      "row": 2
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 69,
+      "row": 2
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 90,
+      "row": 2
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 8,
+      "residue_pair_contacts": 43,
+      "row": 3
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 10,
+      "residue_pair_contacts": 55,
+      "row": 3
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 11,
+      "residue_pair_contacts": 65,
+      "row": 3
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 16,
+      "residue_pair_contacts": 98,
+      "row": 3
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 39,
+      "row": 4
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 59,
+      "row": 4
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 72,
+      "row": 4
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 102,
+      "row": 4
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 4,
+      "residue_pair_contacts": 38,
+      "row": 5
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 8,
+      "residue_pair_contacts": 47,
+      "row": 5
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 9,
+      "residue_pair_contacts": 60,
+      "row": 5
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 13,
+      "residue_pair_contacts": 92,
+      "row": 5
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 34,
+      "row": 6
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 47,
+      "row": 6
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 61,
+      "row": 6
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 2,
+      "residue_pair_contacts": 95,
+      "row": 6
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 0,
+      "residue_pair_contacts": 37,
+      "row": 7
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 49,
+      "row": 7
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 56,
+      "row": 7
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 3,
+      "residue_pair_contacts": 86,
+      "row": 7
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 1,
+      "residue_pair_contacts": 33,
+      "row": 8
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 2,
+      "residue_pair_contacts": 49,
+      "row": 8
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 3,
+      "residue_pair_contacts": 63,
+      "row": 8
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 7,
+      "residue_pair_contacts": 92,
+      "row": 8
+    },
+    {
+      "cutoff_A": 4,
+      "phosphate_residue_pair_contacts": 10,
+      "residue_pair_contacts": 34,
+      "row": 9
+    },
+    {
+      "cutoff_A": 4.5,
+      "phosphate_residue_pair_contacts": 12,
+      "residue_pair_contacts": 41,
+      "row": 9
+    },
+    {
+      "cutoff_A": 5,
+      "phosphate_residue_pair_contacts": 14,
+      "residue_pair_contacts": 51,
+      "row": 9
+    },
+    {
+      "cutoff_A": 6,
+      "phosphate_residue_pair_contacts": 21,
+      "residue_pair_contacts": 70,
+      "row": 9
+    }
+  ]
+}

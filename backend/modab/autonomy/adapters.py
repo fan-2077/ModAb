@@ -16,6 +16,8 @@ BUILTINS = {
     'grounded_report': {'name': '生成带来源核验的事实报告', 'inputs': {'fact_bundle'}, 'output_kind': 'grounded_report'},
     'prepare_at8_states': {'name': '按所选分子形式、Tau 范围与状态准备预测输入', 'inputs': {'at8_sequence_dataset'}, 'output_kind': 'prepared_states'},
     'measure_predictions': {'name': '测量实际预测的界面、位置误差和模型置信度', 'inputs': {'structure_prediction','prepared_states','at8_reference_structure','at8_sequence_dataset'}, 'output_kind': 'fact_bundle'},
+    'diagnose_pose': {'name': '诊断磷酸完整性、肽段形状、结合姿态与阈值敏感性', 'inputs': {'structure_prediction','prepared_states','at8_reference_structure','at8_sequence_dataset'}, 'output_kind': 'fact_bundle'},
+    'prepare_pose_calibration': {'name': '依据已有诊断准备已知结构软模板校准', 'inputs': {'boltz2_input','prepared_states','at8_reference_structure','fact_bundle'}, 'output_kind': 'prepared_states'},
 }
 
 
@@ -50,6 +52,18 @@ class Registry:
             'prepared_states':'Manifests matching the selected prediction input SHA-256; uniquely linked companions are resolved automatically and recorded.',
             'at8_reference_structure':'Commissioned experimental reference; automatically bound only when exactly one is available.',
             'at8_sequence_dataset':'Commissioned identity and candidate denominator; automatically bound only when exactly one is available.'}
+        result['diagnose_pose']['parameters']={**result['measure_predictions']['parameters'],
+            'sensitivity_cutoffs_A':'2 to 6 distinct cutoffs in (0,8]; use the same list across all retained samples'}
+        result['diagnose_pose']['input_contract']=result['measure_predictions']['input_contract']
+        result['diagnose_pose']['limits']=['Keep original antibody-frame RMSD, report independently fitted peptide shape and centroid/rotation separately.',
+            'Include ALL baseline and corrected samples to get before/after comparisons; never select a favorable seed.',
+            'A change in pose is not affinity. Examine complete phosphate groups and threshold sensitivity before selecting a repair.']
+        result['prepare_pose_calibration']['parameters']={'timeout_seconds':'positive integer','mode':'soft_template or restrained_template',
+            'template_tolerance_A':'required ONLY for restrained_template: [0.5,5] A; backbone restraint tolerance, not an independent accuracy cutoff'}
+        result['prepare_pose_calibration']['limits']=['Select exactly ONE diagnosed original boltz2_input and its prepared_states manifest plus the diagnosis fact_bundle and reference.',
+            'Produces a NEW boltz2_input with a three-chain template. Soft mode only provides features; restrained mode activates a backbone potential with explicit tolerance. Predict with matched baseline seeds/settings and diagnose all samples together.',
+            'Restrained recovery demonstrates a conditional modelling capability; distance improvement is partly imposed by the prior and cannot validate an independent binding pose.',
+            'This tests known-structure-assisted pose recovery; never claim blind prediction accuracy or state selectivity from template recovery.']
         for tool_id,item in result.items():
             validation=self.config.get('tools',{}).get(tool_id,{}).get('runtime_validation')
             if validation:item['runtime_validation']=validation
@@ -79,7 +93,7 @@ class Registry:
             raise ContractError('Unknown tool')
         selected = {key: inputs[key] for key in decision['input_ids']}
         bindings=[]
-        if tid=='measure_predictions':
+        if tid in {'measure_predictions','diagnose_pose'}:
             from .input_binding import bind_measurement_inputs
             selected,bindings=bind_measurement_inputs(selected,inputs)
         for key, row in selected.items():
@@ -92,6 +106,17 @@ class Registry:
                 options={kind:[key for key,item in inputs.items() if item['kind']==kind] for kind in sorted(missing)}
                 raise ContractError('MISSING_TOOL_INPUTS: missing='+','.join(sorted(missing))+'; available input IDs by kind='+str(options))
         spec=self._local(mission, tid, params, selected, prior_steps) if tid in BUILTINS else self._boltz(mission, params, selected)
+        if tid=='boltz2_predict' and 'templates' in read(next(iter(selected.values()))['path']):
+            source=next(iter(selected.values()))
+            manifests=[read(v['path']) for v in inputs.values() if v['kind']=='prepared_states' and digest(v['path'])==v['sha256']]
+            matches=[m for m in manifests if m.get('conditioning',{}).get('mode')in {'soft_template','restrained_template'} and any(r['sha256']==source['sha256'] for r in m['records'])]
+            if not matches:raise ContractError('Template input must be linked to a recorded calibration preparation')
+            template=matches[0]['template']
+            if any(m['template']!=template for m in matches) or digest(template['path'])!=template['sha256']:
+                raise ContractError('Calibration template identity changed or is ambiguous')
+            if Path(template['path']).resolve()!=Path(source['path']).parent.joinpath('pose_template.cif').resolve():
+                raise ContractError('Calibration template path differs from prepared input')
+            spec['calibration_template']=template
         if remaining_compute_seconds is not None and spec['timeout_seconds']>remaining_compute_seconds:
             if remaining_compute_seconds<1:raise ContractError('BUDGET_EXHAUSTED:compute_seconds')
             spec['timeout_adjustment']={'requested_seconds':spec['timeout_seconds'],
@@ -108,7 +133,7 @@ class Registry:
         return spec
 
     def _local(self, mission, tid, params, inputs, prior_steps):
-        optional = {'method_id'} if tid == 'prepare_requirements' else {'claims', 'interpretations','conclusion','research_review'} if tid == 'grounded_report' else {'subjects','antibody_form','tau_start','tau_end','states','msa_mode'} if tid=='prepare_at8_states' else {'contact_cutoff_A','near_cutoff_A'} if tid=='measure_predictions' else set()
+        optional = {'method_id'} if tid == 'prepare_requirements' else {'claims', 'interpretations','conclusion','research_review'} if tid == 'grounded_report' else {'subjects','antibody_form','tau_start','tau_end','states','msa_mode'} if tid=='prepare_at8_states' else {'contact_cutoff_A','near_cutoff_A','sensitivity_cutoffs_A'} if tid=='diagnose_pose' else {'contact_cutoff_A','near_cutoff_A'} if tid=='measure_predictions' else {'mode','template_tolerance_A'} if tid=='prepare_pose_calibration' else set()
         if not isinstance(params, dict) or set(params) - ({'timeout_seconds'} | optional):
             extra=sorted(set(params)-({'timeout_seconds'}|optional)) if isinstance(params,dict) else ['parameters must be an object']
             raise ContractError('UNKNOWN_TOOL_PARAMETERS: extra='+','.join(extra)+'; allowed='+','.join(sorted({'timeout_seconds'}|optional)))
@@ -154,6 +179,9 @@ class Registry:
             raise ContractError('Exactly one pinned Boltz input is required')
         model_input = read(next(iter(inputs.values()))['path'])
         validate_boltz_input(model_input, params['msa_mode'])
+        if 'templates' in model_input:
+            template=Path(next(iter(inputs.values()))['path']).parent/'pose_template.cif'
+            if not template.is_file() or template.is_symlink():raise ContractError('Pinned calibration template missing')
         return {'tool_id': 'boltz2_predict', 'tool_version': '2.2.1', 'resource_id': cfg['resource_id'],
             'transport': cfg['transport'], 'inputs': inputs, 'parameters': params,
             'timeout_seconds': params['timeout_seconds'], 'output_kind': 'structure_prediction',
@@ -170,11 +198,11 @@ class Registry:
             atomic_json(request_path, spec['request'], immutable=True)
             runner = Path(__file__).with_name('action_runner.py')
             pins.update({str(request_path): digest(request_path), str(runner): digest(runner)})
-            for dependency in (Path(__file__).with_name('reports.py'), Path(__file__).with_name('contracts.py'),Path(__file__).with_name('science_actions.py'),Path(__file__).with_name('adapters.py'),
+            for dependency in (Path(__file__).with_name('reports.py'), Path(__file__).with_name('contracts.py'),Path(__file__).with_name('science_actions.py'),Path(__file__).with_name('pose_diagnostics.py'),Path(__file__).with_name('adapters.py'),
                 Path(__file__).with_name('worker.py'), Path(__file__).resolve().parents[2]/'dualctx/contracts.py'):
                 pins[str(dependency)] = digest(dependency)
             argv = [sys.executable, '-B', '-I', '-S', '-X', 'utf8', str(runner), str(request_path), str(directory / 'result.json')]
-            if spec['tool_id']=='measure_predictions':
+            if spec['tool_id'] in {'measure_predictions','diagnose_pose'}:
                 argv=[sys.executable,'-B','-X','utf8',str(runner),str(request_path),str(directory/'result.json')]
             return {'schema': 'modab_owned_job_v1', 'job_id': step['job_id'], 'mission_id': step['mission_id'],
                 'step_id': step['step_id'], 'argv': argv, 'cwd': str(directory),
@@ -189,6 +217,16 @@ class Registry:
         model_input = read(source['path'])
         input_path = directory / 'input.yaml'
         atomic_json(input_path, model_input, immutable=True)
+        staged=[]
+        if 'templates' in model_input:
+            template_source=Path(spec['calibration_template']['path'])
+            if digest(template_source)!=spec['calibration_template']['sha256']:raise ContractError('Calibration template changed before staging')
+            template_target=directory/'pose_template.cif'
+            data=template_source.read_bytes()
+            if template_target.exists() and template_target.read_bytes()!=data:raise ContractError('Pinned template changed')
+            if not template_target.exists():
+                with template_target.open('xb') as stream:stream.write(data)
+            staged.append(template_target)
         runner = Path(__file__).with_name('prediction_runner.py')
         runner_path = directory / runner.name
         if runner_path.exists() and runner_path.read_bytes() != runner.read_bytes():
@@ -203,8 +241,9 @@ class Registry:
         if p['use_potentials']:command.append('--use_potentials')
         if p['msa_mode']=='server':command += ['--use_msa_server','--msa_server_url',cfg['msa_endpoint']]
         request_path=directory/'request.json'
-        atomic_json(request_path,{'runtime':{k:cfg[k] for k in ('expected_versions','assets','device_index','remote_root')},'command':command},immutable=True)
-        remote_pins={remote+'/'+path.name:digest(path) for path in (input_path,runner_path,request_path)}
+        atomic_json(request_path,{'runtime':{k:cfg[k] for k in ('expected_versions','assets','device_index','remote_root')},'command':command,
+            'parameters':p,'conditioning':{'mode':'restrained_template'if model_input['templates'][0]['force']else 'soft_template','reference_sha256':digest(staged[0])} if staged else {'mode':'unconditioned'}},immutable=True)
+        remote_pins={remote+'/'+path.name:digest(path) for path in (input_path,runner_path,request_path,*staged)}
         remote_pins.update(cfg['assets'])
         return {'schema':'modab_owned_job_v1','job_id':step['job_id'],'mission_id':step['mission_id'],
             'step_id':step['step_id'],'argv':[cfg['python'],'-B',remote+'/prediction_runner.py',remote+'/request.json'],
@@ -269,8 +308,19 @@ class Registry:
 
 
 def validate_boltz_input(value, msa_mode):
-    if not isinstance(value, dict) or value.get('version') != 1 or set(value) - {'version', 'sequences'}:
-        raise ContractError('This registered adapter requires explicit unconditioned sequences; unsupported input field')
+    if not isinstance(value, dict) or value.get('version') != 1 or set(value) - {'version', 'sequences','templates'}:
+        raise ContractError('This registered adapter requires explicit sequences and optional registered soft template; unsupported input field')
+    if 'templates' in value:
+        templates=value['templates']
+        if not isinstance(templates,list)or len(templates)!=1:raise ContractError('One registered local template required')
+        template=templates[0];force=template.get('force')
+        expected={'cif':'pose_template.cif','chain_id':['A','B','C'],'template_id':['A','B','C'],'force':force}
+        if type(force)is not bool:raise ContractError('Explicit boolean template force required')
+        if force:
+            tolerance=template.get('threshold')
+            if type(tolerance)not in {int,float}or not math.isfinite(tolerance)or not 0.5<=tolerance<=5:raise ContractError('Explicit bounded template restraint tolerance required')
+            expected['threshold']=tolerance
+        if template!=expected:raise ContractError('Only the registered local template calibration is permitted')
     if not isinstance(value['sequences'], list) or not value['sequences']:
         raise ContractError('Protein sequences required')
     seen = set()

@@ -17,6 +17,7 @@ from modab.autonomy.store import ResearchStore
 STATE_LABELS = {'unphosphorylated': '未磷酸化', 'pS202_pT205': 'pS202 / pT205',
                 'pS202_pT205_pS208': 'pS202 / pT205 / pS208'}
 TOOL_LABELS = {'prepare_at8_states': '准备配对研究输入', 'boltz2_predict': '预测复合物结构',
+               'diagnose_pose':'诊断形状、姿态与磷酸接触','prepare_pose_calibration':'准备已知结构辅助校准',
                'measure_predictions': '比较结构与界面', 'grounded_report': '形成研究报告',
                'reuse_evidence': '整理已有证据', 'prepare_requirements': '检查方法与输入要求'}
 

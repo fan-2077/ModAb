@@ -36,7 +36,7 @@ class JobRouter(LocalJobs):
         directory=self.directory(manifest['job_id'])
         atomic_json(directory/'manifest.json',manifest,immutable=True)
         files={p.name:base64.b64encode(p.read_bytes()).decode() for p in directory.iterdir()
-            if p.name in {'input.yaml','prediction_runner.py','request.json'}}
+            if p.name in {'input.yaml','prediction_runner.py','request.json','pose_template.cif'}}
         try:return self.request(route,'submit',manifest['job_id'],manifest=manifest,files=files)
         except (ContractError,OSError,subprocess.TimeoutExpired):
             return {'status':'UNKNOWN','job_id':manifest['job_id'],'reason':'SSH submission response unavailable; original job must be queried'}
